@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ViedoAsyncAvalonia.Views.LoginAndRegister">
+	<DockPanel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.65" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		<TabControl>
+			<TabItem Header="登录">
+				<StackPanel Margin="20">
+					<TextBlock Text="用户名"/>
+					<TextBox Watermark="请输入用户名" Text="{Binding username}"/>
+					<TextBlock Text="密码:"/>
+					<TextBox Watermark="请输入密码" PasswordChar="*" Text="{Binding password}"/>
+					<Button Content="登录" HorizontalAlignment="Center" Margin="0,20,0,0" Command="{Binding LoginRequest}" />
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="注册">
+				<StackPanel Margin="20">
+					<TextBlock Text="用户名:"/>
+					<TextBox Watermark="请输入用户名" Text="{Binding RegisterUsername}"/>
+					<TextBlock Text="密码:"/>
+					<TextBox Watermark="请输入密码" PasswordChar="*" Text="{Binding Registerpassword}"/>
+					<TextBlock Text="确认密码:"/>
+					<TextBox Watermark="请再次输入密码" PasswordChar="*"/>
+					<Button Content="注册" HorizontalAlignment="Center" Margin="0,20,0,0" Command="{Binding RegisterRequest}"/>
+					<TextBlock Text="用户头像" FontSize="20" HorizontalAlignment="Center"/>
+					<Image Name="Avatar" Width="100" Height="100" HorizontalAlignment="Center" Source="{Binding AvatarImageSource}"/>
+					<Button Content="选择头像"  HorizontalAlignment="Center" Click ="OpenAvatarButton_Clicked"/>
+				</StackPanel>
+				
+			</TabItem>
+		</TabControl>
+		
+	</DockPanel>
+</UserControl>

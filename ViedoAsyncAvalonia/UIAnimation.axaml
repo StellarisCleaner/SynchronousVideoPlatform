@@ -1,0 +1,36 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+	<Style Selector="ListBox.sideMenu:not(.expanded)">
+		<Setter Property="Width" Value="50" />
+		<Style.Animations>
+			<Animation Duration="0:0:0.1">
+				<KeyFrame Cue="0%">
+					<Setter Property="Width" Value="200"/>
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="Width" Value="50"/>
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+	</Style>
+	<!-- 展开动画 -->
+	<Style Selector="ListBox.sideMenu.expanded">
+		<Setter Property="Width" Value="200" />
+		<Style.Animations>
+			<Animation Duration="0:0:0.1">
+				<KeyFrame Cue="0%">
+					<Setter Property="Width" Value="50"/>
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="Width" Value="200"/>
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+	</Style>
+  <!-- Add Styles Here -->
+</Styles>

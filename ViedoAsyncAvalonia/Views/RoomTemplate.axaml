@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ViedoAsyncAvalonia.Views.RoomTemplate"
+             xmlns:util="clr-namespace:ViedoAsyncAvalonia.Util" 
+			 xmlns:viewmodels="clr-namespace:ViedoAsyncAvalonia.ViewModels"
+              x:DataType="util:Room">
+	<Border Background="LightGray" CornerRadius="10" Padding="10" Margin="5"
+            PointerPressed="Border_PointerPressed">
+		<Grid ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,Auto,Auto">
+			<!-- 房间名 -->
+			<TextBlock Text="{Binding MasterName}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Margin="10,0,0,0"/>
+			<!-- 房间ID -->
+			<TextBlock Text="{Binding RoomId}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"/><!-- 房间ID -->
+			<TextBlock Text="{Binding ClientNumber}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"/>
+			<TextBlock Text="{Binding Note}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"/>
+		</Grid>
+	</Border>
+</UserControl>

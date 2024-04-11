@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:ViedoAsyncAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ViedoAsyncAvalonia.Views.ActivingRoomsView"
+			 
+			 x:DataType="vm:ActivingRoomsViewModel">
+
+	<Grid>
+		<DockPanel>
+			<ItemsControl ItemsSource="{Binding Rooms}">
+			</ItemsControl>
+		</DockPanel>
+		<Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="创建房间" Margin="10" Command="{Binding CreateRoomCommand}"/>
+		<Grid Background="#A0000000" IsVisible="{Binding IsOverlayVisible}">
+			<TextBlock Text="操作被阻止" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</Grid>
+	</Grid>
+</UserControl>

@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ViedoAsyncAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ViedoAsyncAvalonia.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<DockPanel>
+		<!-- 使用Grid来组合ListBox和一个固定在左下角的圆形按钮 -->
+		<Grid DockPanel.Dock="Left">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<!-- ListBox作为侧边栏菜单 -->
+			<ListBox x:Name="SideMenu" Grid.Row="0" Classes="sideMenu"
+					 ItemsSource="{Binding MenuItems}"
+					 SelectedItem="{Binding SelectedItem}"
+					 PointerEntered="ListBox_PointerEntered"
+					 PointerExited="ListBox_PointerExited_1">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<!-- TextBlock将在IsUserAvatar为false时显示 -->
+							<TextBlock Text="{Binding Name}" IsVisible="{Binding IsUserAvatar, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+							<!-- Ellipse将在IsUserAvatar为true时显示 -->
+							<Ellipse Width="50" Height="50" IsVisible="{Binding IsUserAvatar}">
+								<Ellipse.Fill>
+									<ImageBrush AlignmentX="Left" Stretch="Fill" Source="{Binding ImageSource}"/>
+								</Ellipse.Fill>
+							</Ellipse>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</Grid>
+
+			<!-- 主内容区域 -->
+			<ContentControl Content="{Binding CurrentView}" DockPanel.Dock="Top"/>
+
+
+	</DockPanel>
+</UserControl>

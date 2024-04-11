@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vlc="clr-namespace:LibVLCSharp.Avalonia;assembly=LibVLCSharp.Avalonia"
+			 xmlns:views="clr-namespace:ViedoAsyncAvalonia.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vlcsharp="clr-namespace:LibVLCSharp.Avalonia.Unofficial;assembly=LibVLCSharp.Avalonia.Unofficial"
+			 
+             x:Class="ViedoAsyncAvalonia.Views.VideoView">
+	<Grid>
+		<!-- 定义行，使VideoView占据大部分空间 -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<!-- '*' 表示占用所有可用空间 -->
+			<RowDefinition Height="50"/>
+			<!-- 'Auto' 表示高度由内容决定 x:Name="videoView"-->
+		</Grid.RowDefinitions>
+		
+		<vlc:VideoView  MediaPlayer="{Binding MediaPlayer}" Grid.Row="0" MinWidth="200" MinHeight="200" ZIndex="-5" />
+
+		<!-- 控制条配置在第一行，并在底部 -->
+		<Grid Grid.Row="1" VerticalAlignment="Bottom" Background="AliceBlue" Name="controlPanel" ZIndex="2" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+				<!-- 给Slider分配剩余空间 -->
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="0" Content="Open File" Click="OpenFileButton_Clicked"/>
+			<Button Grid.Column="1" Command="{Binding PlayCommand}" Content="back"/>
+			<Button Grid.Column="2" Command="{Binding PlayCommand}" Content="Play"/>
+			<Button Grid.Column="3" Command="{Binding PlayCommand}" Content="skip"/>
+			<Button Grid.Column="4" Command="{Binding PauseCommand}" Content="Pause"/>
+			<Slider  Name="slider" Grid.Column="5" Minimum="0" Maximum="1" Value="{Binding CurrentPosition,Mode=TwoWay}"  Orientation="Horizontal"/>
+			<Ellipse Grid.Column="6" Width="20" Height="20" Fill="{Binding IsLive, Converter={StaticResource BoolToBrushConverter}}"/>
+		</Grid>
+
+	</Grid>
+
+		
+	
+	
+</UserControl>

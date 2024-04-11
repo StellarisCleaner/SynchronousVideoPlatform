@@ -1,0 +1,45 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ViedoAsyncAvalonia.App"
+			  xmlns:views="clr-namespace:ViedoAsyncAvalonia.Views"
+			 xmlns:viewModels="clr-namespace:ViedoAsyncAvalonia.ViewModels"
+			 xmlns:model="clr-namespace:ViedoAsyncAvalonia.Util"
+			 xmlns:local="clr-namespace:ViedoAsyncAvalonia"
+             RequestedThemeVariant="Light">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <Application.Styles>
+		<FluentTheme>
+			<FluentTheme.Palettes>
+				<!-- 适用于浅色主题变体的调色板 -->
+				<ColorPaletteResources x:Key="Light" Accent="Green" RegionColor="White" ErrorText="Red" />
+				<!-- 适用于暗色主题变体的调色板 -->
+				<ColorPaletteResources x:Key="Dark" Accent="DarkGreen" RegionColor="Black" ErrorText="Yellow" />
+			</FluentTheme.Palettes>
+		</FluentTheme>
+		<StyleInclude Source="avares://ViedoAsyncAvalonia/UIAnimation.axaml"/>
+    </Application.Styles>
+	<Application.DataTemplates>
+		<DataTemplate DataType="{x:Type viewModels:StartPageViewModel}">
+			<views:StartPageView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModels:ActivingRoomsViewModel}">
+			<views:ActivingRoomsView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModels:VideoViewModel}">
+			<views:VideoView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModels:LoginAndRegisterViewModel}">
+			<views:LoginAndRegister />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type model:Room}">
+			<views:RoomTemplate />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type model:User}">
+			<views:UserTemplate />
+		</DataTemplate>
+	</Application.DataTemplates>
+	<Application.Resources>
+		<model:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+		<model:BoolToBrushConverter x:Key="BoolToBrushConverter"/>
+	</Application.Resources>
+</Application>
